@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Diabetes Predictor</title>
+		
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+		
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+		
+<style>
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+body {
+  background-image: url('/static/images/diab.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+</style>
+
+    </head>
+
+    <body>
+		<style>
+	div {text-align: center;}
+	</style>
+
+	<div class="background">
+	<div class="transbox">
+	<h1>Diabetes Predictor</h1>
+	<h3>A Machine Learning Web App To Predict Diabetes.</h3>
+	</div>
+	</div>	
+
+        <div class="container">
+            <form action="{{ url_for('predict') }}" method="POST"><br>
+				<label> Number of Pregnancies</label><br>
+                <input class="form-input" type="text" name="pregnancies" placeholder="eg. 1"><br>
+				<label> Glucose (mg/dL)</label><br>
+                <input class="form-input" type="text" name="glucose" placeholder="eg. 100"><br>
+                <label> Blood Pressure (mmHg) </label><br>
+				<input class="form-input" type="text" name="bloodpressure" placeholder="eg. 85"><br>
+                <label> Skin Thickness (mm) </label><br>
+				<input class="form-input" type="text" name="skinthickness" placeholder="eg. 20"><br>
+                <label> Insulin Level (mIU/mL) </label><br>
+				<input class="form-input" type="text" name="insulin" placeholder="eg. 80"><br>
+                <label>Body Mass Index (kg/m²)</label><br>
+				<input class="form-input" type="text" name="bmi" placeholder="eg. 22.5"><br>
+                <label> Diabetes Pedigree Function </label><br>
+				<input class="form-input" type="text" name="dpf" placeholder="eg. 0.55"><br>
+                <label> Age (in years) </label><br>
+				<input class="form-input" type="text" name="age" placeholder="eg. 21"><br>
+
+                <br><button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            </form>
+            
+            <br>
+            <br>
+		
+            		<div class="results">
+			{% if prediction==1 %}
+				<h2>Prediction: <span class='danger'>Oops! You have DIABETES.</span></h2>
+			{% elif prediction==0 %}
+				<h2>Prediction: <span class='safe'>Congrats! You DON'T have diabetes.</span></h2>
+			{% endif %}
+		</div>
+
+		</div>
+
+        <!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+             <br><br><br><br>  <a target="_blank" href="https://github.com/ReshmikaD/Diabetes-Predictor-Web-App"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/reshmika-dhandapani"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+           <p class='footer-description'>Created by Reshmika D.</p>
+       </div>
+
+    </body>
+</html>
